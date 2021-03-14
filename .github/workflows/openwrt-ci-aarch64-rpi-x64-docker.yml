@@ -40,7 +40,7 @@ jobs:
 
     strategy:
       matrix:
-        db-backend: [rpi2-3-4, rpi364, rpi464, x64]	# 平台分配
+        db-backend: [rpi2-3-4, rpi364, rpi464]	# 平台分配
 
     steps:
       - name: Checkout
