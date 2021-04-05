@@ -1,6 +1,6 @@
 #ACTIONS
 
-针对x86-64, rpi-32bit, rpi3-64bit, rpi4-64bit, aarch64 五种平台定时编译。
+针对x86-64, rpi2-32bit, rpi3-64bit, rpi4-64bit 四种平台定时编译。
 
 Artifacts内容包括：
 
