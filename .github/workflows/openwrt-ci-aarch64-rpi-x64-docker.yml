@@ -139,6 +139,8 @@ jobs:
           cd lede
           make download -j8
           find dl -size -1024c -exec rm -f {} \;
+          mv dl /mnt/
+          ln -s /mnt/dl $(pwd)/dl
 
       - name: Compile firmware
         if: ${{ env.action_state == 'run' ||  github.event_name == 'push' }}
