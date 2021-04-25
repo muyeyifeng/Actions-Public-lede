@@ -102,6 +102,9 @@ jobs:
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* android*
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           sudo -E apt-get update
           sudo -E apt-get upgrade -y
           #==================================
@@ -237,6 +240,7 @@ jobs:
           echo $path
           echo "======================="
           mv $path docker-build/
+          rm -rf lede
           cd docker-build
           cat << EOF >Dockerfile
           FROM scratch
@@ -276,7 +280,7 @@ jobs:
       - name: Push this source
         if: ${{ env.action_state == 'run' &&  matrix.db-backend == 'rpi2-3-4' }}
         run: |
-          rm -rf lede docker-build Clone-Lean-lede
+          rm -rf docker-build
           echo "${{ secrets.GHB_KEY }}" >github.pem
           eval `ssh-agent`
           chmod 600 github.pem
